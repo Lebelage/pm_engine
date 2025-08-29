@@ -1,0 +1,3 @@
+/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles/pm_engine.dir
+/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles/edit_cache.dir
+/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles/rebuild_cache.dir
