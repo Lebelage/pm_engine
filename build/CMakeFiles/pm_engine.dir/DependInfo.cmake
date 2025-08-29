@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_app.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_device.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o.d"
+  "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_pipeline.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_swapchain.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_window.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Utils/src/pme_filereader.cpp" "CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o.d"

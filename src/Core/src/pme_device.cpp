@@ -182,6 +182,32 @@ void pme::PmeDevice::CreateCommandPool()
 #pragma endregion
 
 #pragma region Helpers
+void pme::PmeDevice::CreateImageWithInfo(const VkImageCreateInfo &imageInfo, VkMemoryPropertyFlags properties, VkImage &image, VkDeviceMemory &imageMemory)
+{
+    if (vkCreateImage(vkDevice, &imageInfo, nullptr, &image) != VK_SUCCESS)
+    {
+        throw std::runtime_error("failed to create image!");
+    }
+
+    VkMemoryRequirements memRequirements;
+    vkGetImageMemoryRequirements(vkDevice, image, &memRequirements);
+
+    VkMemoryAllocateInfo allocInfo{};
+    allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+    allocInfo.allocationSize = memRequirements.size;
+    allocInfo.memoryTypeIndex = findMemoryType(memRequirements.memoryTypeBits, properties);
+
+    if (vkAllocateMemory(vkDevice, &allocInfo, nullptr, &imageMemory) != VK_SUCCESS)
+    {
+        throw std::runtime_error("Failed to allocate image memory!");
+    }
+
+    if (vkBindImageMemory(vkDevice, image, imageMemory, 0) != VK_SUCCESS)
+    {
+        throw std::runtime_error("Failed to bind image memory!");
+    }
+}
+
 std::vector<const char *> pme::PmeDevice::GetRequiredExtensions() const
 {
     uint32_t glfwExtensionCount = 0;
@@ -333,6 +359,22 @@ pme::SwapChainSupportDetails pme::PmeDevice::QuerySwapChainSupport(VkPhysicalDev
     return details;
 }
 
+uint32_t pme::PmeDevice::findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties)
+{
+    VkPhysicalDeviceMemoryProperties memProperties;
+    vkGetPhysicalDeviceMemoryProperties(vkPhysicalDevice, &memProperties);
+    for (uint32_t i = 0; i < memProperties.memoryTypeCount; i++)
+    {
+        if ((typeFilter & (1 << i)) &&
+            (memProperties.memoryTypes[i].propertyFlags & properties) == properties)
+        {
+            return i;
+        }
+    }
+
+    throw std::runtime_error("failed to find suitable memory type!");
+}
+
 VkFormat pme::PmeDevice::FindSupportedFormat(const std::vector<VkFormat> &candidates, VkImageTiling tiling, VkFormatFeatureFlags features)
 {
     for (VkFormat format : candidates)
@@ -445,11 +487,11 @@ void pme::PmeDevice::Release()
 {
     vkDestroyDevice(vkDevice, nullptr);
 
-        if (enableValidationLayers)
-        {
-            DestroyDebugUtilsMessengerEXT(vkInstance, debugMessenger, nullptr);
-        }
+    if (enableValidationLayers)
+    {
+        DestroyDebugUtilsMessengerEXT(vkInstance, debugMessenger, nullptr);
+    }
 
-        vkDestroySurfaceKHR(vkInstance, vkSurface, nullptr);
-        vkDestroyInstance(vkInstance, nullptr);
+    vkDestroySurfaceKHR(vkInstance, vkSurface, nullptr);
+    vkDestroyInstance(vkInstance, nullptr);
 }

@@ -26,6 +26,7 @@ void pme::PmeSwapChain::Initialize()
         CreateSwapChain();
         CreateImageViews();
         CreateRenderPass();
+        CreateDepthResources();
         CreateFrameBuffers();
         CreateSyncObjects();
     }
@@ -194,20 +195,18 @@ void pme::PmeSwapChain::CreateRenderPass()
 }
 void pme::PmeSwapChain::CreateFrameBuffers()
 {
-    size_t imageCount = GetImageCount();
-
-    swapChainFramebuffers.resize(imageCount);
-
-    for (size_t i = 0; i < imageCount; i++)
+    swapChainFramebuffers.resize(GetImageCount());
+    for (size_t i = 0; i < GetImageCount(); i++)
     {
-        VkImageView attachments[] = {swapChainImageViews[i]};
+
+        std::array<VkImageView, 2> attachments = {swapChainImageViews[i], depthImageViews[i]};
 
         VkExtent2D swapChainExtent = GetSwapChainExtent();
         VkFramebufferCreateInfo frameBufferInfo = {};
         frameBufferInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
         frameBufferInfo.renderPass = vkRenderPass;
-        frameBufferInfo.attachmentCount = 1;
-        frameBufferInfo.pAttachments = attachments;
+        frameBufferInfo.attachmentCount = static_cast<uint32_t>(attachments.size());
+        frameBufferInfo.pAttachments = attachments.data();
         frameBufferInfo.width = swapChainExtent.width;
         frameBufferInfo.height = swapChainExtent.height;
         frameBufferInfo.layers = 1;
@@ -252,6 +251,53 @@ void pme::PmeSwapChain::CreateSyncObjects()
 
 void pme::PmeSwapChain::CreateDepthResources()
 {
+    VkFormat depthFormat = FindDepthFormat();
+    VkExtent2D swapChainExtent = GetSwapChainExtent();
+
+    depthImages.resize(GetImageCount());
+    depthImageMemories.resize(GetImageCount());
+    depthImageViews.resize(GetImageCount());
+
+    for (int i = 0; i < depthImages.size(); i++)
+    {
+        VkImageCreateInfo imageInfo{};
+        imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+        imageInfo.imageType = VK_IMAGE_TYPE_2D;
+        imageInfo.extent.width = swapChainExtent.width;
+        imageInfo.extent.height = swapChainExtent.height;
+        imageInfo.extent.depth = 1;
+        imageInfo.mipLevels = 1;
+        imageInfo.arrayLayers = 1;
+        imageInfo.format = depthFormat;
+        imageInfo.tiling = VK_IMAGE_TILING_OPTIMAL;
+        imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+        imageInfo.usage = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT;
+        imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
+        imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+        imageInfo.flags = 0;
+
+        device.CreateImageWithInfo(
+            imageInfo,
+            VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
+            depthImages[i],
+            depthImageMemories[i]);
+
+        VkImageViewCreateInfo viewInfo{};
+        viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+        viewInfo.image = depthImages[i];
+        viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+        viewInfo.format = depthFormat;
+        viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT;
+        viewInfo.subresourceRange.baseMipLevel = 0;
+        viewInfo.subresourceRange.levelCount = 1;
+        viewInfo.subresourceRange.baseArrayLayer = 0;
+        viewInfo.subresourceRange.layerCount = 1;
+
+        if (vkCreateImageView(device.GetDevice(), &viewInfo, nullptr, &depthImageViews[i]) != VK_SUCCESS)
+        {
+            throw std::runtime_error("failed to create texture image view!");
+        }
+    }
 }
 
 #pragma endregion
@@ -310,6 +356,76 @@ VkFormat pme::PmeSwapChain::FindDepthFormat()
         VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT);
 }
 #pragma endregion
+
+VkResult pme::PmeSwapChain::AcquireNextImage(uint32_t *imageIndex)
+{
+    vkWaitForFences(
+        device.GetDevice(),
+        1,
+        &inFlightFences[currentFrame],
+        VK_TRUE,
+        std::numeric_limits<uint64_t>::max());
+
+    VkResult result = vkAcquireNextImageKHR(
+        device.GetDevice(),
+        vkSwapChain,
+        std::numeric_limits<uint64_t>::max(),
+        imageAvailableSemaphores[currentFrame], // must be a not signaled semaphore
+        VK_NULL_HANDLE,
+        imageIndex);
+
+    return result;
+}
+
+VkResult pme::PmeSwapChain::SubmitCommandBuffers(const VkCommandBuffer *commandBuffer, uint32_t *imageIndex)
+{
+    if (imagesInFlight[*imageIndex] != VK_NULL_HANDLE)
+    {
+        vkWaitForFences(device.GetDevice(), 1, &imagesInFlight[*imageIndex], VK_TRUE, UINT64_MAX);
+    }
+    imagesInFlight[*imageIndex] = inFlightFences[currentFrame];
+
+    VkSubmitInfo submitInfo = {};
+    submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+
+    VkSemaphore waitSemaphores[] = {imageAvailableSemaphores[currentFrame]};
+    VkPipelineStageFlags waitStages[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT};
+    submitInfo.waitSemaphoreCount = 1;
+    submitInfo.pWaitSemaphores = waitSemaphores;
+    submitInfo.pWaitDstStageMask = waitStages;
+
+    submitInfo.commandBufferCount = 1;
+    submitInfo.pCommandBuffers = commandBuffer;
+
+    VkSemaphore signalSemaphores[] = {renderFinishedSemaphores[currentFrame]};
+    submitInfo.signalSemaphoreCount = 1;
+    submitInfo.pSignalSemaphores = signalSemaphores;
+
+    vkResetFences(device.GetDevice(), 1, &inFlightFences[currentFrame]);
+    if (vkQueueSubmit(device.GetGraphicsQueue(), 1, &submitInfo, inFlightFences[currentFrame]) !=
+        VK_SUCCESS)
+    {
+        throw std::runtime_error("failed to submit draw command buffer!");
+    }
+
+    VkPresentInfoKHR presentInfo = {};
+    presentInfo.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+
+    presentInfo.waitSemaphoreCount = 1;
+    presentInfo.pWaitSemaphores = signalSemaphores;
+
+    VkSwapchainKHR swapChains[] = {vkSwapChain};
+    presentInfo.swapchainCount = 1;
+    presentInfo.pSwapchains = swapChains;
+
+    presentInfo.pImageIndices = imageIndex;
+
+    auto result = vkQueuePresentKHR(device.GetPresentQueue(), &presentInfo);
+
+    currentFrame = (currentFrame + 1) % MAX_FRAMES_IN_FLIGHT;
+
+    return result;
+}
 
 void pme::PmeSwapChain::Release()
 {

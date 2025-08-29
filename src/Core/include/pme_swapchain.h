@@ -34,7 +34,9 @@ namespace pme
 
         VkFormat FindDepthFormat();
 
-    private:
+    public:
+        VkResult AcquireNextImage(uint32_t *imageIndex);
+        VkResult SubmitCommandBuffers(const VkCommandBuffer *commandBuffer, uint32_t *imageIndex);
         void Release();
 
     public:
@@ -63,10 +65,15 @@ namespace pme
         VkExtent2D swapChainExtent{};
 
         PmeDevice &device;
-        std::vector<VkFramebuffer> swapChainFramebuffers;
+
+        std::vector<VkImage> depthImages;
+        std::vector<VkDeviceMemory> depthImageMemories;
+        std::vector<VkImageView> depthImageViews;
         std::vector<VkImage> swapChainImages;
         std::vector<VkImageView> swapChainImageViews;
-
+        
+        std::vector<VkFramebuffer> swapChainFramebuffers;
+        
         VkExtent2D windowExtent;
 
         std::shared_ptr<PmeSwapChain> oldSwapChain;

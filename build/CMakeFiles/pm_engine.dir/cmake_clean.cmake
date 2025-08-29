@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o.d"
+  "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o"
+  "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o"

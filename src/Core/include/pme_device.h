@@ -60,7 +60,14 @@ namespace pme
         QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice physicalDevice);
         bool CheckDeviceExtensionSupport(VkPhysicalDevice device);
         SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
+        uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 
+    public:
+        void CreateImageWithInfo(
+            const VkImageCreateInfo &imageInfo,
+            VkMemoryPropertyFlags properties,
+            VkImage &image,
+            VkDeviceMemory &imageMemory);
         void Release();
 
     private:
@@ -76,7 +83,7 @@ namespace pme
 
         VkQueue GetGraphicsQueue() { return graphicsQueue; }
         VkQueue GetPresentQueue() { return presentQueue; }
-
+        VkCommandPool GetCommandPool() { return vkCommandPool; }
         SwapChainSupportDetails GetSwapChainSupport() { return QuerySwapChainSupport(vkPhysicalDevice); }
 
         int32_t FindMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
