@@ -5,11 +5,9 @@
 #include "Core/include/pme_swapchain.h"
 #include "Core/include/pme_window.h"
 
-// libs
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
-#include <glm/glm.hpp>
-#include <glm/gtc/constants.hpp>
+#include <cassert>
+#include <memory>
+#include <vector>
 namespace pme
 {
     class PmeRenderer
@@ -30,7 +28,11 @@ namespace pme
     public:
         VkRenderPass GetRenderPass() const { return pSwapChain->GetRenderPass(); }
         bool IsFrameStarted() const { return isFrameStarted; }
-
+        int GetFrameIndex() const
+        {
+            assert(isFrameStarted && "Cannot get frame index when frame not in progress");
+            return currentFrameIndex;
+        }
         VkCommandBuffer TryGetCurrentCommandBuffer() const
         {
             try
@@ -41,7 +43,7 @@ namespace pme
             catch (std::runtime_error ex)
             {
             }
-            return commandBuffers[currentImageIndex];
+            return commandBuffers[currentFrameIndex];
         }
 
     private:
@@ -56,6 +58,7 @@ namespace pme
         std::vector<VkCommandBuffer> commandBuffers;
 
         uint32_t currentImageIndex;
+        int currentFrameIndex;
         bool isFrameStarted;
     };
 

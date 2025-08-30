@@ -1014,13 +1014,33 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o: \
   /opt/homebrew/include/glm/vector_relational.hpp \
   /opt/homebrew/include/glm/integer.hpp \
   /opt/homebrew/include/glm/detail/func_integer.inl \
+  /opt/homebrew/include/glm/gtc/matrix_transform.hpp \
+  /opt/homebrew/include/glm/gtc/../mat4x4.hpp \
+  /opt/homebrew/include/glm/gtc/../vec2.hpp \
+  /opt/homebrew/include/glm/gtc/../vec3.hpp \
+  /opt/homebrew/include/glm/gtc/../vec4.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_projection.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/constants.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+  /opt/homebrew/include/glm/gtc/../ext/../gtc/constants.inl \
+  /opt/homebrew/include/glm/gtc/../ext/../geometric.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../trigonometric.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../matrix.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_projection.inl \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_clip_space.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/../ext/scalar_constants.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_clip_space.inl \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_transform.hpp \
+  /opt/homebrew/include/glm/gtc/../ext/matrix_transform.inl \
+  /opt/homebrew/include/glm/gtc/matrix_transform.inl \
+  /opt/homebrew/include/glm/gtc/../geometric.hpp \
+  /opt/homebrew/include/glm/gtc/../trigonometric.hpp \
+  /opt/homebrew/include/glm/gtc/../matrix.hpp \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_renderer.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_swapchain.h \
   /opt/homebrew/include/glm/gtc/constants.hpp \
-  /opt/homebrew/include/glm/gtc/../ext/scalar_constants.hpp \
-  /opt/homebrew/include/glm/gtc/../ext/../detail/setup.hpp \
-  /opt/homebrew/include/glm/gtc/../ext/scalar_constants.inl \
-  /opt/homebrew/include/glm/gtc/constants.inl \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_rendersystem.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_pipeline.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/include/pme_filereader.h \

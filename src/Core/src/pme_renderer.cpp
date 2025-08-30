@@ -61,6 +61,7 @@ void pme::PmeRenderer::EndFrame()
         throw std::runtime_error("Failed to present swap chain image");
 
     isFrameStarted = false;
+    currentFrameIndex = (currentFrameIndex + 1) % PmeSwapChain::MAX_FRAMES_IN_FLIGHT;
 }
 
 void pme::PmeRenderer::BeginSwapChainRenderPass(VkCommandBuffer commandBuffer)
@@ -109,7 +110,7 @@ void pme::PmeRenderer::EndSwapChainRenderPass(VkCommandBuffer commandBuffer)
 
 void pme::PmeRenderer::CreateCommandBuffers()
 {
-    commandBuffers.resize(pSwapChain->GetImageCount());
+    commandBuffers.resize(PmeSwapChain::MAX_FRAMES_IN_FLIGHT);
 
     VkCommandBufferAllocateInfo allocInfo{};
     allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
@@ -138,14 +139,14 @@ void pme::PmeRenderer::RecreateSwapChain()
     }
     else
     {
-        pSwapChain = std::make_unique<PmeSwapChain>(device, extent, std::move(pSwapChain));
-        if (pSwapChain->GetImageCount() != commandBuffers.size())
-        {
-            FreeCommandBuffers();
-            CreateCommandBuffers();
-        }
+        std::shared_ptr<PmeSwapChain> pOldSwapChain = std::move(pSwapChain);
+        pSwapChain = std::make_unique<PmeSwapChain>(device, extent, pOldSwapChain);
+
+        if(!pOldSwapChain->CompareSwapFormats(*pSwapChain.get())){}
+            //throw std::runtime_error("Swap chain image or depth formats has changed");
     }
 }
+
 void pme::PmeRenderer::FreeCommandBuffers()
 {
     vkFreeCommandBuffers(

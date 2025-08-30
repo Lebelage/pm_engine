@@ -5,6 +5,7 @@
 #define GLM_FORCE_RADIANS
 #define GLM_FORCE_DEPTH_ZERO_TO_ONE
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <vector>
 
@@ -12,7 +13,7 @@ namespace pme
 {
     struct Vertex
     {
-        glm::vec2 positions;
+        glm::vec3 positions;
         glm::vec3 color;
         static std::vector<VkVertexInputBindingDescription> GetBindingDescription();
         static std::vector<VkVertexInputAttributeDescription> GetAttributeDescription();

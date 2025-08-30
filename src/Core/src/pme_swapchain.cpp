@@ -252,6 +252,7 @@ void pme::PmeSwapChain::CreateSyncObjects()
 void pme::PmeSwapChain::CreateDepthResources()
 {
     VkFormat depthFormat = FindDepthFormat();
+    swapChainDepthFormat = depthFormat;
     VkExtent2D swapChainExtent = GetSwapChainExtent();
 
     depthImages.resize(GetImageCount());
