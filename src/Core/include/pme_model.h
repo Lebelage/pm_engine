@@ -13,7 +13,7 @@ namespace pme
     struct Vertex
     {
         glm::vec2 positions;
-
+        glm::vec3 color;
         static std::vector<VkVertexInputBindingDescription> GetBindingDescription();
         static std::vector<VkVertexInputAttributeDescription> GetAttributeDescription();
     };

@@ -4,9 +4,14 @@
 #include <array>
 #include "Core/include/pme_window.h"
 #include "Core/include/pme_device.h"
-#include "Core/include/pme_swapchain.h"
-#include "Core/include/pme_pipeline.h"
-#include "Core/include/pme_model.h"
+#include "Core/include/pme_objects.h"
+#include "Core/include/pme_renderer.h"
+
+// libs
+#define GLM_FORCE_RADIANS
+#define GLM_FORCE_DEPTH_ZERO_TO_ONE
+#include <glm/glm.hpp>
+#include <glm/gtc/constants.hpp>
 namespace pme
 {
     class App
@@ -22,24 +27,15 @@ namespace pme
         App &operator=(const App &) = delete;
 
         void Run();
-        void DoFrame();
 
     private:
-    void CreatePipeLineLayout();
-    void CreatePipeLine();
-    void LoadModels();
+        void LoadObjects();
 
-    void CreateCommandBuffer();
     private:
-        VkPipelineLayout pipelineLayout;
-        std::unique_ptr<PmePipeline> pPipeline;
-        std::unique_ptr<PmeModel> pModel;
-
-        std::vector<VkCommandBuffer> commandBuffers;
-
         Window window;
         PmeDevice device;
-        PmeSwapChain swapChain;
+        PmeRenderer renderer;
+        std::vector<PmeObject> pmeObjects;
     };
 
 }

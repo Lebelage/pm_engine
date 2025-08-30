@@ -225,6 +225,54 @@ src/Core/src/pme_pipeline.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.s
 .PHONY : src/Core/src/pme_pipeline.cpp.s
 
+src/Core/src/pme_renderer.o: src/Core/src/pme_renderer.cpp.o
+.PHONY : src/Core/src/pme_renderer.o
+
+# target to build an object file
+src/Core/src/pme_renderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o
+.PHONY : src/Core/src/pme_renderer.cpp.o
+
+src/Core/src/pme_renderer.i: src/Core/src/pme_renderer.cpp.i
+.PHONY : src/Core/src/pme_renderer.i
+
+# target to preprocess a source file
+src/Core/src/pme_renderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.i
+.PHONY : src/Core/src/pme_renderer.cpp.i
+
+src/Core/src/pme_renderer.s: src/Core/src/pme_renderer.cpp.s
+.PHONY : src/Core/src/pme_renderer.s
+
+# target to generate assembly for a file
+src/Core/src/pme_renderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.s
+.PHONY : src/Core/src/pme_renderer.cpp.s
+
+src/Core/src/pme_rendersystem.o: src/Core/src/pme_rendersystem.cpp.o
+.PHONY : src/Core/src/pme_rendersystem.o
+
+# target to build an object file
+src/Core/src/pme_rendersystem.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o
+.PHONY : src/Core/src/pme_rendersystem.cpp.o
+
+src/Core/src/pme_rendersystem.i: src/Core/src/pme_rendersystem.cpp.i
+.PHONY : src/Core/src/pme_rendersystem.i
+
+# target to preprocess a source file
+src/Core/src/pme_rendersystem.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.i
+.PHONY : src/Core/src/pme_rendersystem.cpp.i
+
+src/Core/src/pme_rendersystem.s: src/Core/src/pme_rendersystem.cpp.s
+.PHONY : src/Core/src/pme_rendersystem.s
+
+# target to generate assembly for a file
+src/Core/src/pme_rendersystem.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.s
+.PHONY : src/Core/src/pme_rendersystem.cpp.s
+
 src/Core/src/pme_swapchain.o: src/Core/src/pme_swapchain.cpp.o
 .PHONY : src/Core/src/pme_swapchain.o
 
@@ -366,6 +414,12 @@ help:
 	@echo "... src/Core/src/pme_pipeline.o"
 	@echo "... src/Core/src/pme_pipeline.i"
 	@echo "... src/Core/src/pme_pipeline.s"
+	@echo "... src/Core/src/pme_renderer.o"
+	@echo "... src/Core/src/pme_renderer.i"
+	@echo "... src/Core/src/pme_renderer.s"
+	@echo "... src/Core/src/pme_rendersystem.o"
+	@echo "... src/Core/src/pme_rendersystem.i"
+	@echo "... src/Core/src/pme_rendersystem.s"
 	@echo "... src/Core/src/pme_swapchain.o"
 	@echo "... src/Core/src/pme_swapchain.i"
 	@echo "... src/Core/src/pme_swapchain.s"

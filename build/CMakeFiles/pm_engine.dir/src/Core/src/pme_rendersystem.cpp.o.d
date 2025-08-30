@@ -1,6 +1,6 @@
-CMakeFiles/pm_engine.dir/src/main.cpp.o: \
-  /Users/frame/Projects/CPP_projects/pm_engine/src/main.cpp \
-  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_app.h \
+CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o: \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_rendersystem.cpp \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_rendersystem.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/exception \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
@@ -794,6 +794,7 @@ CMakeFiles/pm_engine.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/stack.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/print \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/unistd.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_device.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_window.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/include/pme_logger.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/chrono \
@@ -820,11 +821,29 @@ CMakeFiles/pm_engine.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/os/availability.h \
-  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_device.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/set \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__tree \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_set \
-  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_objects.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_pipeline.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/include/pme_filereader.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/fstream \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/filesystem \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/copy_options.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_entry.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/file_status.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/file_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/perms.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/file_time_type.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/filesystem_error.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/operations.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/perm_options.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/space_info.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_iterator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_options.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_model.h \
   /opt/homebrew/include/glm/glm.hpp \
   /opt/homebrew/include/glm/detail/_fixes.hpp \
@@ -1014,8 +1033,7 @@ CMakeFiles/pm_engine.dir/src/main.cpp.o: \
   /opt/homebrew/include/glm/vector_relational.hpp \
   /opt/homebrew/include/glm/integer.hpp \
   /opt/homebrew/include/glm/detail/func_integer.inl \
-  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_renderer.h \
-  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_swapchain.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_objects.h \
   /opt/homebrew/include/glm/gtc/constants.hpp \
   /opt/homebrew/include/glm/gtc/../ext/scalar_constants.hpp \
   /opt/homebrew/include/glm/gtc/../ext/../detail/setup.hpp \

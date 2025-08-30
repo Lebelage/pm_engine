@@ -1,14 +1,11 @@
 #include "Core/include/pme_app.h"
-#include "pme_app.h"
 
-pme::App::App() : window{WIDTH, HEIGHT, "PhysicsModelingEngine"}, device{window}, swapChain{device, window.GetWindowExtent()}
+#include "Core/include/pme_rendersystem.h"
+pme::App::App() : window{WIDTH, HEIGHT, "PhysicsModelingEngine"}, device{window}, renderer{window, device}
 {
     try
     {
-        LoadModels();
-        CreatePipeLineLayout();
-        CreatePipeLine();
-        CreateCommandBuffer();
+        LoadObjects();
     }
     catch (std::runtime_error ex)
     {
@@ -21,109 +18,36 @@ pme::App::~App()
 
 void pme::App::Run()
 {
+    RenderSystem renderSystem{device, renderer.GetRenderPass()};
+
     while (!window.ShouldClose())
     {
         glfwPollEvents();
-        DoFrame();
+
+        if(auto commandBuffer = renderer.BeginFrame())
+        {
+            renderer.BeginSwapChainRenderPass(commandBuffer);
+            renderSystem.RenderObjects(commandBuffer, pmeObjects);
+            renderer.EndSwapChainRenderPass(commandBuffer);
+            renderer.EndFrame();
+        }
     }
 }
 
-void pme::App::DoFrame()
-{
-    uint32_t imageIndex;
-    auto result = swapChain.AcquireNextImage(&imageIndex);
-
-    if (result != VK_SUCCESS)
-        throw std::runtime_error("Failed to acqure swap chain image");
-
-    result = swapChain.SubmitCommandBuffers(&commandBuffers[imageIndex], &imageIndex);
-
-    if (result != VK_SUCCESS)
-        throw std::runtime_error("Failed to present swap chain image");
-}
-
-void pme::App::CreatePipeLineLayout()
-{
-    VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
-    pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-    pipelineLayoutInfo.setLayoutCount = 0;
-    pipelineLayoutInfo.pSetLayouts = nullptr;
-    pipelineLayoutInfo.pushConstantRangeCount = 0;
-    pipelineLayoutInfo.pPushConstantRanges = nullptr;
-    if (vkCreatePipelineLayout(device.GetDevice(), &pipelineLayoutInfo, nullptr, &pipelineLayout) !=
-        VK_SUCCESS)
-    {
-        throw std::runtime_error("Failed to create pipeline layout!");
-    }
-
-    Logger::Log(LogLevel::Success, "Pipeline layout was created");
-}
-
-void pme::App::CreatePipeLine()
-{
-    PipelineConfigInfo configInfo{};
-    PmePipeline::SetDefaultPipelineConfigInfo(configInfo);
-    configInfo.renderPass = swapChain.GetRenderPass();
-    configInfo.pipelineLayout = pipelineLayout;
-    pPipeline = std::make_unique<PmePipeline>(device, "shaders/sshader.vert.spv", "shaders/sshader.frag.spv", configInfo);
-}
-
-void pme::App::LoadModels()
+void pme::App::LoadObjects()
 {
     std::vector<Vertex> verticies{
-        {{0.0f, -0.5f}}, {{0.5f, 0.5f}}, {{-0.5f, 0.5f}}};
+        {{0.0f, -0.5f}, {1.0f, 0.0f, 0.6f}}, {{0.5f, 0.5f}, {0.0f, 0.5f, 0.0f}}, {{-0.5f, 0.5f}, {0.0f, 0.0f, 1.0f}}};
 
-    pModel = std::make_unique<PmeModel>(device, verticies);
+    auto pModel = std::make_shared<PmeModel>(device, verticies);
+    auto triangle = PmeObject::CreateObject();
+    triangle.model = pModel;
+    triangle.color = {.1f, .8f, .1f};
+    triangle.transform2d.translation.x = .0f;
+    triangle.transform2d.scale = {2.f, .5f};
+    triangle.transform2d.rotation = .25f * glm::two_pi<float>();
+
+    pmeObjects.push_back(std::move(triangle));
 }
 
-void pme::App::CreateCommandBuffer()
-{
-    commandBuffers.resize(swapChain.GetImageCount());
 
-    VkCommandBufferAllocateInfo allocInfo{};
-    allocInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO;
-    allocInfo.level = VK_COMMAND_BUFFER_LEVEL_PRIMARY;
-    allocInfo.commandPool = device.GetCommandPool();
-    allocInfo.commandBufferCount = static_cast<uint32_t>(commandBuffers.size());
-
-    if (vkAllocateCommandBuffers(device.GetDevice(), &allocInfo, commandBuffers.data()) != VK_SUCCESS)
-        throw std::runtime_error("Failed to create command buffers");
-
-    Logger::Log(LogLevel::Success, "Command buffers were created");
-
-    for (size_t i = 0; i < commandBuffers.size(); i++)
-    {
-        VkCommandBufferBeginInfo beginInfo{};
-        beginInfo.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
-
-        if (vkBeginCommandBuffer(commandBuffers[i], &beginInfo) != VK_SUCCESS)
-            throw std::runtime_error("Failed to begin recording command buffer");
-
-        VkRenderPassBeginInfo renderPassInfo{};
-        renderPassInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
-        renderPassInfo.renderPass = swapChain.GetRenderPass();
-        renderPassInfo.framebuffer = swapChain.GetFrameBuffer(i);
-        renderPassInfo.renderArea.offset = {0, 0};
-        renderPassInfo.renderArea.extent = swapChain.GetSwapChainExtent();
-
-        std::array<VkClearValue, 2> clearValues{};
-        clearValues[0].color = {0.1f, 0.1f, 0.1f, 1.0f};
-        clearValues[1].depthStencil = {1.0f, 0};
-
-        renderPassInfo.clearValueCount = static_cast<uint32_t>(clearValues.size());
-        renderPassInfo.pClearValues = clearValues.data();
-
-        vkCmdBeginRenderPass(commandBuffers[i], &renderPassInfo, VK_SUBPASS_CONTENTS_INLINE);
-
-        pPipeline->Bind(commandBuffers[i]);
-        pModel->Bind(commandBuffers[i]);
-        pModel->Draw(commandBuffers[i]);
-        
-        vkCmdEndRenderPass(commandBuffers[i]);
-
-        if (vkEndCommandBuffer(commandBuffers[i]) != VK_SUCCESS)
-            throw std::runtime_error("Failed to record command buffer");
-    }
-
-    Logger::Log(LogLevel::Success, "Command buffers were created");
-}
