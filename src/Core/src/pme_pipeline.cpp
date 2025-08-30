@@ -120,8 +120,8 @@ void pme::PmePipeline::CreateGraphicsPipeline(const std::string &vertFilepath, c
     shaderStages[1].pNext = nullptr;
     shaderStages[1].pSpecializationInfo = nullptr;
 
-    auto &bindingDescriptions = configInfo.bindingDescriptions;
-    auto &attributeDescriptions = configInfo.attributeDescriptions;
+    auto bindingDescriptions = Vertex::GetBindingDescription();
+    auto attributeDescriptions = Vertex::GetAttributeDescription();
     VkPipelineVertexInputStateCreateInfo vertexInputInfo{};
     vertexInputInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
     vertexInputInfo.vertexAttributeDescriptionCount =

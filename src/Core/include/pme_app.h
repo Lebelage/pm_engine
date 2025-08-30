@@ -6,6 +6,7 @@
 #include "Core/include/pme_device.h"
 #include "Core/include/pme_swapchain.h"
 #include "Core/include/pme_pipeline.h"
+#include "Core/include/pme_model.h"
 namespace pme
 {
     class App
@@ -26,11 +27,13 @@ namespace pme
     private:
     void CreatePipeLineLayout();
     void CreatePipeLine();
+    void LoadModels();
 
     void CreateCommandBuffer();
     private:
         VkPipelineLayout pipelineLayout;
         std::unique_ptr<PmePipeline> pPipeline;
+        std::unique_ptr<PmeModel> pModel;
 
         std::vector<VkCommandBuffer> commandBuffers;
 

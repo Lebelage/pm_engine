@@ -2,6 +2,7 @@
 #include "Core/include/pme_device.h"
 #include "Utils/include/pme_filereader.h"
 #include "Utils/include/pme_logger.h"
+#include "Core/include/pme_model.h"
 #include <string>
 #include <vector>
 namespace pme

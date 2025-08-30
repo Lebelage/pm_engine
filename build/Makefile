@@ -177,6 +177,30 @@ src/Core/src/pme_device.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.s
 .PHONY : src/Core/src/pme_device.cpp.s
 
+src/Core/src/pme_model.o: src/Core/src/pme_model.cpp.o
+.PHONY : src/Core/src/pme_model.o
+
+# target to build an object file
+src/Core/src/pme_model.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o
+.PHONY : src/Core/src/pme_model.cpp.o
+
+src/Core/src/pme_model.i: src/Core/src/pme_model.cpp.i
+.PHONY : src/Core/src/pme_model.i
+
+# target to preprocess a source file
+src/Core/src/pme_model.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.i
+.PHONY : src/Core/src/pme_model.cpp.i
+
+src/Core/src/pme_model.s: src/Core/src/pme_model.cpp.s
+.PHONY : src/Core/src/pme_model.s
+
+# target to generate assembly for a file
+src/Core/src/pme_model.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.s
+.PHONY : src/Core/src/pme_model.cpp.s
+
 src/Core/src/pme_pipeline.o: src/Core/src/pme_pipeline.cpp.o
 .PHONY : src/Core/src/pme_pipeline.o
 
@@ -336,6 +360,9 @@ help:
 	@echo "... src/Core/src/pme_device.o"
 	@echo "... src/Core/src/pme_device.i"
 	@echo "... src/Core/src/pme_device.s"
+	@echo "... src/Core/src/pme_model.o"
+	@echo "... src/Core/src/pme_model.i"
+	@echo "... src/Core/src/pme_model.s"
 	@echo "... src/Core/src/pme_pipeline.o"
 	@echo "... src/Core/src/pme_pipeline.i"
 	@echo "... src/Core/src/pme_pipeline.s"

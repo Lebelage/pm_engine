@@ -13,7 +13,7 @@ find_package(Vulkan REQUIRED)
 if(NOT Vulkan_FOUND)
     message(FATAL_ERROR "Vulkan SDK not found.")
 endif()
-
+    message("Vulkan SDK path: ${Vulkan_INCLUDE_DIRS}")
 file(GLOB_RECURSE SOURCES "src/*.cpp")
 
 # Добавляем исполняемый файл
