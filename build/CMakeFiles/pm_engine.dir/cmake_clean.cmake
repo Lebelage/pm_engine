@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o.d"
+  "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o"
+  "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o"

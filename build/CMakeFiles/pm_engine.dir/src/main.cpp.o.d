@@ -1040,4 +1040,5 @@ CMakeFiles/pm_engine.dir/src/main.cpp.o: \
   /opt/homebrew/include/glm/gtc/../matrix.hpp \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_renderer.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_swapchain.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_camera.h \
   /opt/homebrew/include/glm/gtc/constants.hpp

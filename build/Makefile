@@ -153,6 +153,30 @@ src/Core/src/pme_app.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.s
 .PHONY : src/Core/src/pme_app.cpp.s
 
+src/Core/src/pme_camera.o: src/Core/src/pme_camera.cpp.o
+.PHONY : src/Core/src/pme_camera.o
+
+# target to build an object file
+src/Core/src/pme_camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o
+.PHONY : src/Core/src/pme_camera.cpp.o
+
+src/Core/src/pme_camera.i: src/Core/src/pme_camera.cpp.i
+.PHONY : src/Core/src/pme_camera.i
+
+# target to preprocess a source file
+src/Core/src/pme_camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.i
+.PHONY : src/Core/src/pme_camera.cpp.i
+
+src/Core/src/pme_camera.s: src/Core/src/pme_camera.cpp.s
+.PHONY : src/Core/src/pme_camera.s
+
+# target to generate assembly for a file
+src/Core/src/pme_camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.s
+.PHONY : src/Core/src/pme_camera.cpp.s
+
 src/Core/src/pme_device.o: src/Core/src/pme_device.cpp.o
 .PHONY : src/Core/src/pme_device.o
 
@@ -405,6 +429,9 @@ help:
 	@echo "... src/Core/src/pme_app.o"
 	@echo "... src/Core/src/pme_app.i"
 	@echo "... src/Core/src/pme_app.s"
+	@echo "... src/Core/src/pme_camera.o"
+	@echo "... src/Core/src/pme_camera.i"
+	@echo "... src/Core/src/pme_camera.s"
 	@echo "... src/Core/src/pme_device.o"
 	@echo "... src/Core/src/pme_device.i"
 	@echo "... src/Core/src/pme_device.s"

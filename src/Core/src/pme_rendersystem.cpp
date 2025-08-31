@@ -48,10 +48,10 @@ void pme::RenderSystem::CreatePipeLine(VkRenderPass renderPass)
     pPipeline = std::make_unique<PmePipeline>(device, "shaders/sshader.vert.spv", "shaders/sshader.frag.spv", configInfo);
 }
 
-void pme::RenderSystem::RenderObjects(VkCommandBuffer commandBuffer, std::vector<PmeObject>& pmeObjects)
+void pme::RenderSystem::RenderObjects(VkCommandBuffer commandBuffer, std::vector<PmeObject>& pmeObjects, const PmeCamera& camera)
 {
     pPipeline->Bind(commandBuffer);
-
+    auto projectionView = camera.GetProjectionMatrix() * camera.GetViewMatrix();
     for (auto &obj : pmeObjects)
     {
         obj.transform.rotation.y = glm::mod(obj.transform.rotation.y + 0.01f, glm::two_pi<float>());
@@ -59,7 +59,7 @@ void pme::RenderSystem::RenderObjects(VkCommandBuffer commandBuffer, std::vector
 
         SimplePushConstantData push{};
         push.color = obj.color;
-        push.transform = obj.transform.mat4();
+        push.transform = projectionView * obj.transform.mat4();
 
         vkCmdPushConstants(
             commandBuffer,

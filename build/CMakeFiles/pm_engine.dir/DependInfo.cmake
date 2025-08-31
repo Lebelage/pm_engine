@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_app.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o.d"
+  "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_camera.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_device.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_model.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o.d"
   "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_pipeline.cpp" "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o" "gcc" "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o.d"

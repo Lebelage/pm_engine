@@ -37,10 +37,9 @@ namespace pme
     public:
         VkResult AcquireNextImage(uint32_t *imageIndex);
         VkResult SubmitCommandBuffers(const VkCommandBuffer *commandBuffer, uint32_t *imageIndex);
-        bool CompareSwapFormats(const PmeSwapChain& swapChain) const 
+        bool CompareSwapFormats(const PmeSwapChain &swapChain) const
         {
-            swapChain.swapChainDepthFormat == swapChainDepthFormat &&
-            swapChain.swapChainImageFormat == swapChainImageFormat;
+            swapChain.swapChainDepthFormat == swapChainDepthFormat &&swapChain.swapChainImageFormat == swapChainImageFormat;
         }
         void Release();
 
@@ -56,6 +55,11 @@ namespace pme
         size_t GetImageCount() { return swapChainImages.size(); }
 
         VkExtent2D GetSwapChainExtent() { return swapChainExtent; }
+
+        float GetExtentAspectRatio()
+        {
+            return static_cast<float>(swapChainExtent.width) / static_cast<float>(swapChainExtent.height);
+        }
 
         uint32_t GetWidth() const { return swapChainExtent.width; }
 
@@ -76,9 +80,9 @@ namespace pme
         std::vector<VkImageView> depthImageViews;
         std::vector<VkImage> swapChainImages;
         std::vector<VkImageView> swapChainImageViews;
-        
+
         std::vector<VkFramebuffer> swapChainFramebuffers;
-        
+
         VkExtent2D windowExtent;
 
         std::shared_ptr<PmeSwapChain> oldSwapChain;

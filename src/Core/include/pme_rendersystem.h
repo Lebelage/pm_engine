@@ -3,13 +3,11 @@
 #include <iostream>
 #include <array>
 
+#include "Core/include/pme_camera.h"
 #include "Core/include/pme_device.h"
 #include "Core/include/pme_pipeline.h"
 #include "Core/include/pme_objects.h"
 
-#define GLM_FORCE_RADIANS
-#define GLM_FORCE_DEPTH_ZERO_TO_ONE
-#include <glm/glm.hpp>
 #include <glm/gtc/constants.hpp>
 
 namespace pme
@@ -30,7 +28,7 @@ namespace pme
         RenderSystem &operator=(const RenderSystem &) = delete;
 
     public:
-        void RenderObjects(VkCommandBuffer commandBuffer, std::vector<PmeObject>& pmeObjects);
+        void RenderObjects(VkCommandBuffer commandBuffer, std::vector<PmeObject>& pmeObjects, const PmeCamera& camera);
 
     private:
         void CreatePipeLineLayout();

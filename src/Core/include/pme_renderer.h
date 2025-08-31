@@ -27,6 +27,7 @@ namespace pme
 
     public:
         VkRenderPass GetRenderPass() const { return pSwapChain->GetRenderPass(); }
+        float GetAspectRatio() const {return pSwapChain->GetExtentAspectRatio(); }
         bool IsFrameStarted() const { return isFrameStarted; }
         int GetFrameIndex() const
         {
