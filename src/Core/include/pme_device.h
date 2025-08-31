@@ -60,20 +60,23 @@ namespace pme
         QueueFamilyIndices FindQueueFamilies(VkPhysicalDevice physicalDevice);
         bool CheckDeviceExtensionSupport(VkPhysicalDevice device);
         SwapChainSupportDetails QuerySwapChainSupport(VkPhysicalDevice device);
+        VkCommandBuffer BeginSingleTimeCommands();
+        void EndSingleTimeCommands(VkCommandBuffer commandBuffer);
 
     public:
         void CreateBuffer(
             VkDeviceSize size,
             VkBufferUsageFlags usage,
             VkMemoryPropertyFlags properties,
-            VkBuffer& buffer,
-            VkDeviceMemory& bufferMemory
-        );
+            VkBuffer &buffer,
+            VkDeviceMemory &bufferMemory);
         void CreateImageWithInfo(
             const VkImageCreateInfo &imageInfo,
             VkMemoryPropertyFlags properties,
             VkImage &image,
             VkDeviceMemory &imageMemory);
+
+        void CopyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
         void Release();
 
     private:

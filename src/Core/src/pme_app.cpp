@@ -16,78 +16,29 @@ pme::App::~App()
 {
 }
 
-std::unique_ptr<pme::PmeModel> createCubeModel(pme::PmeDevice &device, glm::vec3 offset)
-{
-    std::vector<pme::Vertex> vertices{
-
-        // left face (white)
-        {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
-        {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
-        {{-.5f, -.5f, .5f}, {.9f, .9f, .9f}},
-        {{-.5f, -.5f, -.5f}, {.9f, .9f, .9f}},
-        {{-.5f, .5f, -.5f}, {.9f, .9f, .9f}},
-        {{-.5f, .5f, .5f}, {.9f, .9f, .9f}},
-
-        // right face (yellow)
-        {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
-        {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
-        {{.5f, -.5f, .5f}, {.8f, .8f, .1f}},
-        {{.5f, -.5f, -.5f}, {.8f, .8f, .1f}},
-        {{.5f, .5f, -.5f}, {.8f, .8f, .1f}},
-        {{.5f, .5f, .5f}, {.8f, .8f, .1f}},
-
-        // top face (orange, remember y axis points down)
-        {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-        {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-        {{-.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-        {{-.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-        {{.5f, -.5f, -.5f}, {.9f, .6f, .1f}},
-        {{.5f, -.5f, .5f}, {.9f, .6f, .1f}},
-
-        // bottom face (red)
-        {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-        {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
-        {{-.5f, .5f, .5f}, {.8f, .1f, .1f}},
-        {{-.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-        {{.5f, .5f, -.5f}, {.8f, .1f, .1f}},
-        {{.5f, .5f, .5f}, {.8f, .1f, .1f}},
-
-        // nose face (blue)
-        {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-        {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-        {{-.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-        {{-.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-        {{.5f, -.5f, 0.5f}, {.1f, .1f, .8f}},
-        {{.5f, .5f, 0.5f}, {.1f, .1f, .8f}},
-
-        // tail face (green)
-        {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-        {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-        {{-.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-        {{-.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-        {{.5f, -.5f, -0.5f}, {.1f, .8f, .1f}},
-        {{.5f, .5f, -0.5f}, {.1f, .8f, .1f}},
-
-    };
-    for (auto &v : vertices)
-    {
-        v.positions += offset;
-    }
-    return std::make_unique<pme::PmeModel>(device, vertices);
-}
-
 void pme::App::Run()
 {
     RenderSystem renderSystem{device, renderer.GetRenderPass()};
+
     PmeCamera camera{};
+    auto viewerObject = PmeObject::CreateObject();
+    KeyboradInput cameraController{};
+
+    auto currentTime = std::chrono::high_resolution_clock::now();
     while (!window.ShouldClose())
-    {
-        camera.SetViewDirection(glm::vec3{.0f}, glm::vec3{-.3f, .3f, 1.f});
-        float aspect = renderer.GetAspectRatio();
-        // camera.SetOrtoghraphicProjection(-aspect, aspect, -1, 1, -1, 1);
-        camera.SetPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10.0f);
+    {     
         glfwPollEvents();
 
+        auto newTime = std::chrono::high_resolution_clock::now();
+        float frameTime = std::chrono::duration<float, std::chrono::seconds::period>(newTime - currentTime).count();
+        currentTime = newTime;
+
+        cameraController.MoveInPlaneXZ(window.GetGLFWwindow(), frameTime, viewerObject);
+        camera.SetViewXYZ(viewerObject.transform.translation, viewerObject.transform.rotation);
+        float aspect = renderer.GetAspectRatio();
+
+        camera.SetPerspectiveProjection(glm::radians(50.f), aspect, 0.1f, 10.f);
+        
         if (auto commandBuffer = renderer.BeginFrame())
         {
             renderer.BeginSwapChainRenderPass(commandBuffer);
@@ -100,11 +51,18 @@ void pme::App::Run()
 
 void pme::App::LoadObjects()
 {
-    std::shared_ptr<PmeModel> model = createCubeModel(device, {.0f, .0f, .0f});
-    auto cube = PmeObject::CreateObject();
-    cube.model = model;
-    cube.transform.translation = {.0f, .0f, 5.0f};
-    cube.transform.scale = {.5f, .5f, .5f};
-    // cube.transform.translation = {.0f, .0f, .5f};
-    pmeObjects.push_back(std::move(cube));
+    try
+    {
+        std::shared_ptr<PmeModel> model = PmeModel::CreateModelFromFile(device, "/Users/frame/Projects/CPP_projects/pm_engine/models/smooth_vase.obj");
+        auto cube = PmeObject::CreateObject();
+        cube.model = model;
+        cube.transform.translation = {.0f, .0f, 5.0f};
+        cube.transform.scale = {.5f, .5f, .5f};
+        // cube.transform.translation = {.0f, .0f, .5f};
+        pmeObjects.push_back(std::move(cube));
+
+    } catch(std::runtime_error ex)
+    {
+        Logger::Log(LogLevel::Error, ex.what());
+    }
 }

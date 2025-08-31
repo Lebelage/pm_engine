@@ -39,7 +39,7 @@ namespace pme
         VkResult SubmitCommandBuffers(const VkCommandBuffer *commandBuffer, uint32_t *imageIndex);
         bool CompareSwapFormats(const PmeSwapChain &swapChain) const
         {
-            swapChain.swapChainDepthFormat == swapChainDepthFormat &&swapChain.swapChainImageFormat == swapChainImageFormat;
+            return swapChain.swapChainDepthFormat == swapChainDepthFormat &&swapChain.swapChainImageFormat == swapChainImageFormat;
         }
         void Release();
 

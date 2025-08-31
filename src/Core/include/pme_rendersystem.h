@@ -15,7 +15,7 @@ namespace pme
     struct SimplePushConstantData
     {
         glm::mat4 transform{1.f};
-        alignas(16) glm::vec3 color;
+        glm::mat4 modelMatrix{1.f};
     };
 
     class RenderSystem

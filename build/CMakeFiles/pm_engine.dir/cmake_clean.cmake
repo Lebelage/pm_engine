@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o.d"
+  "CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o"
+  "CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o.d"
   "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o"

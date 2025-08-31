@@ -1,13 +1,15 @@
 #pragma once
-#include <exception>
-#include <iostream>
-#include <array>
 #include "Core/include/pme_window.h"
 #include "Core/include/pme_device.h"
 #include "Core/include/pme_objects.h"
 #include "Core/include/pme_renderer.h"
 #include "Core/include/pme_camera.h"
+#include "Core/include/pme_input_keyborad.h"
 
+#include <exception>
+#include <iostream>
+#include <array>
+#include <chrono>
 #include <glm/gtc/constants.hpp>
 namespace pme
 {
