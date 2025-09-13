@@ -1034,6 +1034,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_model.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_buffer.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/include/pme_hash.h \
   /opt/homebrew/include/glm/gtc/matrix_transform.hpp \
   /opt/homebrew/include/glm/gtc/../mat4x4.hpp \
@@ -1158,4 +1159,5 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o: \
   /opt/homebrew/include/glm/gtx/../mat4x4.hpp \
   /opt/homebrew/include/glm/gtx/hash.inl \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_objects.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_frame_info.h \
   /opt/homebrew/include/glm/gtc/constants.hpp

@@ -86,10 +86,24 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_app.cpp -o CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.s
 
+CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o: CMakeFiles/pm_engine.dir/flags.make
+CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_buffer.cpp
+CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_buffer.cpp
+
+CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_buffer.cpp > CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.i
+
+CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_buffer.cpp -o CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.s
+
 CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_camera.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_camera.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.i: cmake_force
@@ -100,10 +114,24 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_camera.cpp -o CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.s
 
+CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o: CMakeFiles/pm_engine.dir/flags.make
+CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_descriptors.cpp
+CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_descriptors.cpp
+
+CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_descriptors.cpp > CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.i
+
+CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_descriptors.cpp -o CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.s
+
 CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_device.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_device.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.i: cmake_force
@@ -117,7 +145,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_input_keyborad.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_input_keyborad.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.i: cmake_force
@@ -131,7 +159,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_model.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_model.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.i: cmake_force
@@ -142,10 +170,24 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_model.cpp -o CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.s
 
+CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o: CMakeFiles/pm_engine.dir/flags.make
+CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_objects.cpp
+CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_objects.cpp
+
+CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_objects.cpp > CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.i
+
+CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_objects.cpp -o CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.s
+
 CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_pipeline.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_pipeline.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.i: cmake_force
@@ -159,7 +201,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_renderer.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_renderer.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.i: cmake_force
@@ -173,7 +215,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_rendersystem.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_rendersystem.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.i: cmake_force
@@ -187,7 +229,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_swapchain.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_swapchain.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.i: cmake_force
@@ -201,7 +243,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_swapchain.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_window.cpp
 CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o -MF CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_window.cpp
 
 CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.i: cmake_force
@@ -215,7 +257,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_window.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/src/pme_filereader.cpp
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o -MF CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/src/pme_filereader.cpp
 
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.i: cmake_force
@@ -229,7 +271,7 @@ CMakeFiles/pm_engine.dir/src/Utils/src/pme_filereader.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/src/pme_logger.cpp
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o -MF CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o.d -o CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/src/pme_logger.cpp
 
 CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.i: cmake_force
@@ -243,7 +285,7 @@ CMakeFiles/pm_engine.dir/src/Utils/src/pme_logger.cpp.s: cmake_force
 CMakeFiles/pm_engine.dir/src/main.cpp.o: CMakeFiles/pm_engine.dir/flags.make
 CMakeFiles/pm_engine.dir/src/main.cpp.o: /Users/frame/Projects/CPP_projects/pm_engine/src/main.cpp
 CMakeFiles/pm_engine.dir/src/main.cpp.o: CMakeFiles/pm_engine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/pm_engine.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/pm_engine.dir/src/main.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/pm_engine.dir/src/main.cpp.o -MF CMakeFiles/pm_engine.dir/src/main.cpp.o.d -o CMakeFiles/pm_engine.dir/src/main.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/main.cpp
 
 CMakeFiles/pm_engine.dir/src/main.cpp.i: cmake_force
@@ -257,10 +299,13 @@ CMakeFiles/pm_engine.dir/src/main.cpp.s: cmake_force
 # Object files for target pm_engine
 pm_engine_OBJECTS = \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o" \
+"CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o" \
+"CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o" \
+"CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o" \
 "CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o" \
@@ -274,10 +319,13 @@ pm_engine_OBJECTS = \
 pm_engine_EXTERNAL_OBJECTS =
 
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o
+pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o
+pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_device.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_input_keyborad.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o
+pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_pipeline.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_renderer.cpp.o
 pm_engine: CMakeFiles/pm_engine.dir/src/Core/src/pme_rendersystem.cpp.o
@@ -290,7 +338,7 @@ pm_engine: CMakeFiles/pm_engine.dir/build.make
 pm_engine: /opt/homebrew/lib/libglfw.3.4.dylib
 pm_engine: /usr/local/lib/libvulkan.dylib
 pm_engine: CMakeFiles/pm_engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable pm_engine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/frame/Projects/CPP_projects/pm_engine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable pm_engine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pm_engine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,5 +1,7 @@
 #pragma once
 #include "Core/include/pme_device.h"
+#include "Core/include/pme_buffer.h"
+
 #include "Utils/include/pme_hash.h"
 // libs
 #define GLM_FORCE_RADIANS
@@ -61,14 +63,12 @@ namespace pme
 
     private:
         PmeDevice &device;
-
-        VkBuffer vertexBuffer;
-        VkDeviceMemory vertexBufferMemory;
+        
+        std::unique_ptr<PmeBuffer> vertexBuffer;
         uint32_t vertexCount;
 
         bool hasIndexBuffer = false;
-        VkBuffer indexBuffer;
-        VkDeviceMemory indexBufferMemory;
+        std::unique_ptr<PmeBuffer> indexBuffer;
         uint32_t indexCount;
     };
 }

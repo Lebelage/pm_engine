@@ -7,9 +7,21 @@
 },
 {
   "directory": "/Users/frame/Projects/CPP_projects/pm_engine/build",
+  "command": "/usr/bin/clang++  -I/Users/frame/Projects/CPP_projects/pm_engine/src -I/Users/frame/Projects/CPP_projects/pm_engine/src/Core/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_buffer.cpp",
+  "file": "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_buffer.cpp",
+  "output": "CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o"
+},
+{
+  "directory": "/Users/frame/Projects/CPP_projects/pm_engine/build",
   "command": "/usr/bin/clang++  -I/Users/frame/Projects/CPP_projects/pm_engine/src -I/Users/frame/Projects/CPP_projects/pm_engine/src/Core/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_camera.cpp",
   "file": "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_camera.cpp",
   "output": "CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.o"
+},
+{
+  "directory": "/Users/frame/Projects/CPP_projects/pm_engine/build",
+  "command": "/usr/bin/clang++  -I/Users/frame/Projects/CPP_projects/pm_engine/src -I/Users/frame/Projects/CPP_projects/pm_engine/src/Core/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_descriptors.cpp",
+  "file": "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_descriptors.cpp",
+  "output": "CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o"
 },
 {
   "directory": "/Users/frame/Projects/CPP_projects/pm_engine/build",
@@ -28,6 +40,12 @@
   "command": "/usr/bin/clang++  -I/Users/frame/Projects/CPP_projects/pm_engine/src -I/Users/frame/Projects/CPP_projects/pm_engine/src/Core/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_model.cpp",
   "file": "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_model.cpp",
   "output": "CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.o"
+},
+{
+  "directory": "/Users/frame/Projects/CPP_projects/pm_engine/build",
+  "command": "/usr/bin/clang++  -I/Users/frame/Projects/CPP_projects/pm_engine/src -I/Users/frame/Projects/CPP_projects/pm_engine/src/Core/include -isystem /opt/homebrew/include -g -std=gnu++17 -arch arm64 -o CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o -c /Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_objects.cpp",
+  "file": "/Users/frame/Projects/CPP_projects/pm_engine/src/Core/src/pme_objects.cpp",
+  "output": "CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o"
 },
 {
   "directory": "/Users/frame/Projects/CPP_projects/pm_engine/build",

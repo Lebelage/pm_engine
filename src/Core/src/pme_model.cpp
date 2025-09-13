@@ -3,7 +3,6 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "Core/include/tiny_obj_loader.h"
 
-
 namespace std
 {
     template <>
@@ -24,53 +23,35 @@ pme::PmeModel::PmeModel(PmeDevice &device, const Builder &builder) : device{devi
     CreateIndexBuffers(builder.indices);
 }
 
-pme::PmeModel::~PmeModel()
-{
-    vkDestroyBuffer(device.GetDevice(), vertexBuffer, nullptr);
-    vkFreeMemory(device.GetDevice(), vertexBufferMemory, nullptr);
-
-    if (hasIndexBuffer)
-    {
-        vkDestroyBuffer(device.GetDevice(), indexBuffer, nullptr);
-        vkFreeMemory(device.GetDevice(), indexBufferMemory, nullptr);
-    }
-}
+pme::PmeModel::~PmeModel() {}
 
 void pme::PmeModel::CreateVertexBuffers(const std::vector<Vertex> &verticies)
 {
     try
     {
         vertexCount = static_cast<uint32_t>(verticies.size());
-        // if(vertexCount < 3)
+        assert(vertexCount >= 3 && "Vertex count must be at least 3");
         VkDeviceSize bufferSize = sizeof(verticies[0]) * vertexCount;
+        uint32_t vertexSize = sizeof(verticies[0]);
 
-        VkBuffer stagingBuffer;
-        VkDeviceMemory stagingBufferMemory;
-
-        device.CreateBuffer(
-            bufferSize,
+        PmeBuffer stagingBuffer{
+            device,
+            vertexSize,
+            vertexCount,
             VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
-            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
-            stagingBuffer,
-            stagingBufferMemory);
+            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT};
 
-        void *data;
+        stagingBuffer.Map();
+        stagingBuffer.WriteToBuffer((void *)verticies.data());
 
-        vkMapMemory(device.GetDevice(), stagingBufferMemory, 0, bufferSize, 0, &data);
-        memcpy(data, verticies.data(), static_cast<uint32_t>(bufferSize));
-        vkUnmapMemory(device.GetDevice(), stagingBufferMemory);
-
-        device.CreateBuffer(
-            bufferSize,
+        vertexBuffer = std::make_unique<PmeBuffer>(
+            device,
+            vertexSize,
+            vertexCount,
             VK_BUFFER_USAGE_VERTEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
-            VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
-            vertexBuffer,
-            vertexBufferMemory);
+            VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
-        device.CopyBuffer(stagingBuffer, vertexBuffer, bufferSize);
-
-        vkDestroyBuffer(device.GetDevice(), stagingBuffer, nullptr);
-        vkFreeMemory(device.GetDevice(), stagingBufferMemory, nullptr);
+        device.CopyBuffer(stagingBuffer.GetBuffer(), vertexBuffer->GetBuffer(), bufferSize);
     }
 
     catch (std::runtime_error ex)
@@ -79,47 +60,35 @@ void pme::PmeModel::CreateVertexBuffers(const std::vector<Vertex> &verticies)
 }
 void pme::PmeModel::CreateIndexBuffers(const std::vector<uint32_t> &indices)
 {
-    try
-    {
-        indexCount = static_cast<uint32_t>(indices.size());
-        hasIndexBuffer = indexCount > 0;
 
-        if (!hasIndexBuffer)
-            return;
+    indexCount = static_cast<uint32_t>(indices.size());
+    hasIndexBuffer = indexCount > 0;
 
-        VkDeviceSize bufferSize = sizeof(indices[0]) * indexCount;
+    if (!hasIndexBuffer)
+        return;
 
-        VkBuffer stagingBuffer;
-        VkDeviceMemory stagingBufferMemory;
+    VkDeviceSize bufferSize = sizeof(indices[0]) * indexCount;
+    uint32_t indexSize = sizeof(indices[0]);
 
-        device.CreateBuffer(
-            bufferSize,
-            VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
-            VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
-            stagingBuffer,
-            stagingBufferMemory);
+    PmeBuffer stagingBuffer{
+        device,
+        indexSize,
+        indexCount,
+        VK_BUFFER_USAGE_TRANSFER_SRC_BIT,
+        VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT,
+    };
 
-        void *data;
+    stagingBuffer.Map();
+    stagingBuffer.WriteToBuffer((void *)indices.data());
 
-        vkMapMemory(device.GetDevice(), stagingBufferMemory, 0, bufferSize, 0, &data);
-        memcpy(data, indices.data(), static_cast<uint32_t>(bufferSize));
-        vkUnmapMemory(device.GetDevice(), stagingBufferMemory);
+    indexBuffer = std::make_unique<PmeBuffer>(
+        device,
+        indexSize,
+        indexCount,
+        VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
+        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT);
 
-        device.CreateBuffer(
-            bufferSize,
-            VK_BUFFER_USAGE_INDEX_BUFFER_BIT | VK_BUFFER_USAGE_TRANSFER_DST_BIT,
-            VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
-            indexBuffer,
-            indexBufferMemory);
-
-        device.CopyBuffer(stagingBuffer, indexBuffer, bufferSize);
-
-        vkDestroyBuffer(device.GetDevice(), stagingBuffer, nullptr);
-        vkFreeMemory(device.GetDevice(), stagingBufferMemory, nullptr);
-    }
-    catch (std::runtime_error ex)
-    {
-    }
+    device.CopyBuffer(stagingBuffer.GetBuffer(), indexBuffer->GetBuffer(), bufferSize);
 }
 
 std::unique_ptr<pme::PmeModel> pme::PmeModel::CreateModelFromFile(pme::PmeDevice &device, const std::string &filePath)
@@ -142,13 +111,13 @@ void pme::PmeModel::Draw(VkCommandBuffer commandBuffer)
 
 void pme::PmeModel::Bind(VkCommandBuffer commandBuffer)
 {
-    VkBuffer buffers[] = {vertexBuffer};
+    VkBuffer buffers[] = {vertexBuffer->GetBuffer()};
     VkDeviceSize offsets[] = {0};
 
     vkCmdBindVertexBuffers(commandBuffer, 0, 1, buffers, offsets);
 
     if (hasIndexBuffer)
-        vkCmdBindIndexBuffer(commandBuffer, indexBuffer, 0, VK_INDEX_TYPE_UINT32);
+        vkCmdBindIndexBuffer(commandBuffer, indexBuffer->GetBuffer(), 0, VK_INDEX_TYPE_UINT32);
 }
 
 std::vector<VkVertexInputBindingDescription> pme::Vertex::GetBindingDescription()

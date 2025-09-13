@@ -153,6 +153,30 @@ src/Core/src/pme_app.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.s
 .PHONY : src/Core/src/pme_app.cpp.s
 
+src/Core/src/pme_buffer.o: src/Core/src/pme_buffer.cpp.o
+.PHONY : src/Core/src/pme_buffer.o
+
+# target to build an object file
+src/Core/src/pme_buffer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.o
+.PHONY : src/Core/src/pme_buffer.cpp.o
+
+src/Core/src/pme_buffer.i: src/Core/src/pme_buffer.cpp.i
+.PHONY : src/Core/src/pme_buffer.i
+
+# target to preprocess a source file
+src/Core/src/pme_buffer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.i
+.PHONY : src/Core/src/pme_buffer.cpp.i
+
+src/Core/src/pme_buffer.s: src/Core/src/pme_buffer.cpp.s
+.PHONY : src/Core/src/pme_buffer.s
+
+# target to generate assembly for a file
+src/Core/src/pme_buffer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_buffer.cpp.s
+.PHONY : src/Core/src/pme_buffer.cpp.s
+
 src/Core/src/pme_camera.o: src/Core/src/pme_camera.cpp.o
 .PHONY : src/Core/src/pme_camera.o
 
@@ -176,6 +200,30 @@ src/Core/src/pme_camera.s: src/Core/src/pme_camera.cpp.s
 src/Core/src/pme_camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_camera.cpp.s
 .PHONY : src/Core/src/pme_camera.cpp.s
+
+src/Core/src/pme_descriptors.o: src/Core/src/pme_descriptors.cpp.o
+.PHONY : src/Core/src/pme_descriptors.o
+
+# target to build an object file
+src/Core/src/pme_descriptors.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.o
+.PHONY : src/Core/src/pme_descriptors.cpp.o
+
+src/Core/src/pme_descriptors.i: src/Core/src/pme_descriptors.cpp.i
+.PHONY : src/Core/src/pme_descriptors.i
+
+# target to preprocess a source file
+src/Core/src/pme_descriptors.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.i
+.PHONY : src/Core/src/pme_descriptors.cpp.i
+
+src/Core/src/pme_descriptors.s: src/Core/src/pme_descriptors.cpp.s
+.PHONY : src/Core/src/pme_descriptors.s
+
+# target to generate assembly for a file
+src/Core/src/pme_descriptors.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_descriptors.cpp.s
+.PHONY : src/Core/src/pme_descriptors.cpp.s
 
 src/Core/src/pme_device.o: src/Core/src/pme_device.cpp.o
 .PHONY : src/Core/src/pme_device.o
@@ -248,6 +296,30 @@ src/Core/src/pme_model.s: src/Core/src/pme_model.cpp.s
 src/Core/src/pme_model.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_model.cpp.s
 .PHONY : src/Core/src/pme_model.cpp.s
+
+src/Core/src/pme_objects.o: src/Core/src/pme_objects.cpp.o
+.PHONY : src/Core/src/pme_objects.o
+
+# target to build an object file
+src/Core/src/pme_objects.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.o
+.PHONY : src/Core/src/pme_objects.cpp.o
+
+src/Core/src/pme_objects.i: src/Core/src/pme_objects.cpp.i
+.PHONY : src/Core/src/pme_objects.i
+
+# target to preprocess a source file
+src/Core/src/pme_objects.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.i
+.PHONY : src/Core/src/pme_objects.cpp.i
+
+src/Core/src/pme_objects.s: src/Core/src/pme_objects.cpp.s
+.PHONY : src/Core/src/pme_objects.s
+
+# target to generate assembly for a file
+src/Core/src/pme_objects.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/pm_engine.dir/build.make CMakeFiles/pm_engine.dir/src/Core/src/pme_objects.cpp.s
+.PHONY : src/Core/src/pme_objects.cpp.s
 
 src/Core/src/pme_pipeline.o: src/Core/src/pme_pipeline.cpp.o
 .PHONY : src/Core/src/pme_pipeline.o
@@ -453,9 +525,15 @@ help:
 	@echo "... src/Core/src/pme_app.o"
 	@echo "... src/Core/src/pme_app.i"
 	@echo "... src/Core/src/pme_app.s"
+	@echo "... src/Core/src/pme_buffer.o"
+	@echo "... src/Core/src/pme_buffer.i"
+	@echo "... src/Core/src/pme_buffer.s"
 	@echo "... src/Core/src/pme_camera.o"
 	@echo "... src/Core/src/pme_camera.i"
 	@echo "... src/Core/src/pme_camera.s"
+	@echo "... src/Core/src/pme_descriptors.o"
+	@echo "... src/Core/src/pme_descriptors.i"
+	@echo "... src/Core/src/pme_descriptors.s"
 	@echo "... src/Core/src/pme_device.o"
 	@echo "... src/Core/src/pme_device.i"
 	@echo "... src/Core/src/pme_device.s"
@@ -465,6 +543,9 @@ help:
 	@echo "... src/Core/src/pme_model.o"
 	@echo "... src/Core/src/pme_model.i"
 	@echo "... src/Core/src/pme_model.s"
+	@echo "... src/Core/src/pme_objects.o"
+	@echo "... src/Core/src/pme_objects.i"
+	@echo "... src/Core/src/pme_objects.s"
 	@echo "... src/Core/src/pme_pipeline.o"
 	@echo "... src/Core/src/pme_pipeline.i"
 	@echo "... src/Core/src/pme_pipeline.s"

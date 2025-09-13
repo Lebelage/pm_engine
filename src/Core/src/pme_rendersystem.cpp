@@ -1,10 +1,10 @@
 #include "Core/include/pme_rendersystem.h"
 
-pme::RenderSystem::RenderSystem(PmeDevice& device, VkRenderPass renderPass) : device{device}
+pme::RenderSystem::RenderSystem(PmeDevice &device, VkRenderPass renderPass, VkDescriptorSetLayout globalSetLayout) : device{device}
 {
     try
     {
-        CreatePipeLineLayout();
+        CreatePipeLineLayout(globalSetLayout);
         CreatePipeLine(renderPass);
     }
     catch (std::runtime_error ex)
@@ -14,20 +14,22 @@ pme::RenderSystem::RenderSystem(PmeDevice& device, VkRenderPass renderPass) : de
 
 pme::RenderSystem::~RenderSystem()
 {
-    vkDestroyPipelineLayout(device.GetDevice(),pipelineLayout,nullptr);
+    vkDestroyPipelineLayout(device.GetDevice(), pipelineLayout, nullptr);
 }
 
-void pme::RenderSystem::CreatePipeLineLayout()
+void pme::RenderSystem::CreatePipeLineLayout(VkDescriptorSetLayout globalSetLayout)
 {
     VkPushConstantRange pushConstantRange{};
     pushConstantRange.stageFlags = VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT;
     pushConstantRange.offset = 0;
     pushConstantRange.size = sizeof(SimplePushConstantData);
 
+    std::vector<VkDescriptorSetLayout> descriptorSetLayouts{globalSetLayout};
+
     VkPipelineLayoutCreateInfo pipelineLayoutInfo{};
     pipelineLayoutInfo.sType = VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO;
-    pipelineLayoutInfo.setLayoutCount = 0;
-    pipelineLayoutInfo.pSetLayouts = nullptr;
+    pipelineLayoutInfo.setLayoutCount = static_cast<uint32_t>(descriptorSetLayouts.size());
+    pipelineLayoutInfo.pSetLayouts = descriptorSetLayouts.data();
     pipelineLayoutInfo.pushConstantRangeCount = 1;
     pipelineLayoutInfo.pPushConstantRanges = &pushConstantRange;
     if (vkCreatePipelineLayout(device.GetDevice(), &pipelineLayoutInfo, nullptr, &pipelineLayout) !=
@@ -48,26 +50,35 @@ void pme::RenderSystem::CreatePipeLine(VkRenderPass renderPass)
     pPipeline = std::make_unique<PmePipeline>(device, "shaders/sshader.vert.spv", "shaders/sshader.frag.spv", configInfo);
 }
 
-void pme::RenderSystem::RenderObjects(VkCommandBuffer commandBuffer, std::vector<PmeObject>& pmeObjects, const PmeCamera& camera)
+void pme::RenderSystem::RenderObjects(FrameInfo &frameInfo, std::vector<PmeObject> &gameObjects)
 {
-    pPipeline->Bind(commandBuffer);
-    auto projectionView = camera.GetProjectionMatrix() * camera.GetViewMatrix();
-    for (auto &obj : pmeObjects)
+    pPipeline->Bind(frameInfo.commandBuffer);
+    
+    vkCmdBindDescriptorSets(
+        frameInfo.commandBuffer,
+        VK_PIPELINE_BIND_POINT_GRAPHICS,
+        pipelineLayout,
+        0,
+        1,
+        &frameInfo.globalDescriptorSet,
+        0,
+        nullptr);
+
+    for (auto &obj : gameObjects)
     {
         SimplePushConstantData push{};
-        auto modelMatrix = obj.transform.mat4();
-        push.transform = projectionView * modelMatrix;
-        push.modelMatrix = modelMatrix;
+        push.modelMatrix = obj.transform.mat4();
+        push.normalMatrix = obj.transform.normalMatrix();
 
         vkCmdPushConstants(
-            commandBuffer,
+            frameInfo.commandBuffer,
             pipelineLayout,
             VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT,
             0,
             sizeof(SimplePushConstantData),
             &push);
 
-        obj.model->Bind(commandBuffer);
-        obj.model->Draw(commandBuffer);
+        obj.model->Bind(frameInfo.commandBuffer);
+        obj.model->Draw(frameInfo.commandBuffer);
     }
 }

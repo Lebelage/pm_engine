@@ -826,6 +826,7 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_set \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_objects.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_model.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_buffer.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Utils/include/pme_hash.h \
   /opt/homebrew/include/glm/glm.hpp \
   /opt/homebrew/include/glm/detail/_fixes.hpp \
@@ -1162,4 +1163,5 @@ CMakeFiles/pm_engine.dir/src/Core/src/pme_app.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/directory_options.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__filesystem/u8path.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_frame_info.h
