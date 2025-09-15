@@ -5,6 +5,7 @@
 #include "Core/include/pme_renderer.h"
 #include "Core/include/pme_camera.h"
 #include "Core/include/pme_input_keyborad.h"
+#include "Core/include/pme_descriptors.h"
 
 #include <exception>
 #include <iostream>
@@ -41,6 +42,7 @@ namespace pme
         PmeDevice device;
         PmeRenderer renderer;
         std::vector<PmeObject> pmeObjects;
+        std::unique_ptr<PmeDescriptorPool> globalPool;
     };
 
 }

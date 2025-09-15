@@ -1142,4 +1142,5 @@ CMakeFiles/pm_engine.dir/src/main.cpp.o: \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_swapchain.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_camera.h \
   /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_input_keyborad.h \
+  /Users/frame/Projects/CPP_projects/pm_engine/src/Core/include/pme_descriptors.h \
   /opt/homebrew/include/glm/gtc/constants.hpp

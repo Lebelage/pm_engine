@@ -1,9 +1,14 @@
 #include "Core/include/pme_app.h"
 #include "Core/include/pme_rendersystem.h"
 #include "Core/include/pme_buffer.h"
+#include "Core/include/pme_descriptors.h"
 
 pme::App::App() : window{WIDTH, HEIGHT, "PhysicsModelingEngine"}, device{window}, renderer{window, device}
 {
+    globalPool = PmeDescriptorPool::Builder(device)
+                     .SetMaxSets(PmeSwapChain::MAX_FRAMES_IN_FLIGHT)
+                     .AddPoolSize(VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, PmeSwapChain::MAX_FRAMES_IN_FLIGHT)
+                     .Build();
     try
     {
         LoadObjects();
@@ -20,6 +25,7 @@ pme::App::~App()
 void pme::App::Run()
 {
     std::vector<std::unique_ptr<PmeBuffer>> uboBuffers(PmeSwapChain::MAX_FRAMES_IN_FLIGHT);
+
     for (int i = 0; i < uboBuffers.size(); i++)
     {
         uboBuffers[i] = std::make_unique<PmeBuffer>(
@@ -31,7 +37,21 @@ void pme::App::Run()
         uboBuffers[i]->Map();
     }
 
-    RenderSystem renderSystem{device, renderer.GetRenderPass()};
+    auto globalSetLayout = PmeDescriptorSetLayout::Builder(device)
+                               .AddBinding(0, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_SHADER_STAGE_VERTEX_BIT)
+                               .Build();
+
+    std::vector<VkDescriptorSet> globalDescriptorsSets(PmeSwapChain::MAX_FRAMES_IN_FLIGHT);
+
+    for (int i = 0; i < globalDescriptorsSets.size(); i++)
+    {
+        auto bufferInfo = uboBuffers[i]->DescriptorInfo();
+        PmeDescriptorWriter(*globalSetLayout, *globalPool)
+            .WriteBuffer(0, &bufferInfo)
+            .Build(globalDescriptorsSets[i]);
+    }
+
+    RenderSystem renderSystem{device, renderer.GetRenderPass(), globalSetLayout->GetDescriptorSetLayout()};
 
     PmeCamera camera{};
     auto viewerObject = PmeObject::CreateObject();
@@ -55,14 +75,16 @@ void pme::App::Run()
         if (auto commandBuffer = renderer.BeginFrame())
         {
             int frameIndex = renderer.GetFrameIndex();
-            FrameInfo frameInfo{frameIndex, frameTime, commandBuffer, camera};
+            FrameInfo frameInfo{frameIndex, frameTime, commandBuffer, camera, globalDescriptorsSets[frameIndex]};
 
             GlobalUbo ubo{};
             ubo.projectionView = camera.GetProjectionMatrix() * camera.GetViewMatrix();
             uboBuffers[frameIndex]->WriteToBuffer(&ubo);
             uboBuffers[frameIndex]->Flush();
+
             renderer.BeginSwapChainRenderPass(commandBuffer);
             renderSystem.RenderObjects(frameInfo, pmeObjects);
+            renderer.EndSwapChainRenderPass(commandBuffer);
             renderer.EndFrame();
         }
     }

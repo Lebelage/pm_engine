@@ -23,6 +23,8 @@ namespace pme
 
     std::unique_ptr<PmeDescriptorSetLayout> PmeDescriptorSetLayout::Builder::Build() const
     {
+        
+        //return std::make_unique<PmeDescriptorSetLayout>(new PmeDescriptorSetLayout(device, bindings));
         return std::make_unique<PmeDescriptorSetLayout>(device, bindings);
     }
 #pragma endregion
@@ -81,14 +83,14 @@ namespace pme
 
     std::unique_ptr<PmeDescriptorPool> PmeDescriptorPool::Builder::Build() const
     {
-        return std::make_unique<PmeDescriptorPool>(device, maxSets, poolFlags, poolSizes);
+        return std::make_unique<PmeDescriptorPool> (device, maxSets, poolFlags, poolSizes);
     }
 #pragma endregion
 
 #pragma region descriptor pool
 
     PmeDescriptorPool::PmeDescriptorPool(
-        PmeDevice &PmeDevice,
+        PmeDevice &device,
         uint32_t maxSets,
         VkDescriptorPoolCreateFlags poolFlags,
         const std::vector<VkDescriptorPoolSize> &poolSizes)
@@ -101,7 +103,7 @@ namespace pme
         descriptorPoolInfo.maxSets = maxSets;
         descriptorPoolInfo.flags = poolFlags;
 
-        if (vkCreateDescriptorPool(PmeDevice.GetDevice(), &descriptorPoolInfo, nullptr, &descriptorPool) !=
+        if (vkCreateDescriptorPool(device.GetDevice(), &descriptorPoolInfo, nullptr, &descriptorPool) !=
             VK_SUCCESS)
         {
             throw std::runtime_error("failed to create descriptor pool!");
@@ -147,9 +149,12 @@ namespace pme
 
 #pragma region descriptor writer
     PmeDescriptorWriter::PmeDescriptorWriter(PmeDescriptorSetLayout &setLayout, PmeDescriptorPool &pool)
-        : setLayout{setLayout}, pool{pool} {}
+        : setLayout{setLayout}, pool{pool} 
+        {
+            
+        }
 
-    PmeDescriptorWriter &PmeDescriptorWriter::writeBuffer(
+    PmeDescriptorWriter &PmeDescriptorWriter::WriteBuffer(
         uint32_t binding, VkDescriptorBufferInfo *bufferInfo)
     {
         assert(setLayout.bindings.count(binding) == 1 && "Layout does not contain specified binding");
@@ -171,7 +176,7 @@ namespace pme
         return *this;
     }
 
-    PmeDescriptorWriter &PmeDescriptorWriter::writeImage(
+    PmeDescriptorWriter &PmeDescriptorWriter::WriteImage(
         uint32_t binding, VkDescriptorImageInfo *imageInfo)
     {
         assert(setLayout.bindings.count(binding) == 1 && "Layout does not contain specified binding");

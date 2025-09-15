@@ -7,13 +7,13 @@
 #include <vector>
 namespace pme
 {
-    class PmeDescriptorSetLayout
+     class PmeDescriptorSetLayout
     {
     public:
         class Builder
         {
         public:
-            Builder(PmeDevice &device) : device{device} {}
+            Builder(PmeDevice& device) : device{device} {}
 
             Builder &AddBinding(
                 uint32_t binding,
@@ -23,7 +23,7 @@ namespace pme
             std::unique_ptr<PmeDescriptorSetLayout> Build() const;
 
         private:
-            PmeDevice &device;
+            PmeDevice& device;
             std::unordered_map<uint32_t, VkDescriptorSetLayoutBinding> bindings{};
         };
 
@@ -35,7 +35,7 @@ namespace pme
         VkDescriptorSetLayout GetDescriptorSetLayout() const { return descriptorSetLayout; }
 
     private:
-        PmeDevice &device;
+        PmeDevice& device;
         VkDescriptorSetLayout descriptorSetLayout;
         std::unordered_map<uint32_t, VkDescriptorSetLayoutBinding> bindings;
 
@@ -48,7 +48,7 @@ namespace pme
         class Builder
         {
         public:
-            Builder(PmeDevice &device) : device{device} {}
+            Builder(PmeDevice& device) : device{device} {}
 
             Builder &AddPoolSize(VkDescriptorType descriptorType, uint32_t count);
             Builder &SetPoolFlags(VkDescriptorPoolCreateFlags flags);
@@ -56,7 +56,7 @@ namespace pme
             std::unique_ptr<PmeDescriptorPool> Build() const;
 
         private:
-            PmeDevice &device;
+            PmeDevice& device;
             std::vector<VkDescriptorPoolSize> poolSizes{};
             uint32_t maxSets = 1000;
             VkDescriptorPoolCreateFlags poolFlags = 0;
@@ -90,8 +90,8 @@ namespace pme
     public:
         PmeDescriptorWriter(PmeDescriptorSetLayout &setLayout, PmeDescriptorPool &pool);
 
-        PmeDescriptorWriter &writeBuffer(uint32_t binding, VkDescriptorBufferInfo *bufferInfo);
-        PmeDescriptorWriter &writeImage(uint32_t binding, VkDescriptorImageInfo *imageInfo);
+        PmeDescriptorWriter &WriteBuffer(uint32_t binding, VkDescriptorBufferInfo *bufferInfo);
+        PmeDescriptorWriter &WriteImage(uint32_t binding, VkDescriptorImageInfo *imageInfo);
 
         bool Build(VkDescriptorSet &set);
         void Overwrite(VkDescriptorSet &set);
@@ -101,5 +101,4 @@ namespace pme
         PmeDescriptorPool &pool;
         std::vector<VkWriteDescriptorSet> writes;
     };
-
 }
